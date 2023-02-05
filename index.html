@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>ROOTILE</title>
+        <style>
+            html body {margin:0;}
+            table { width: auto; table-layout: fixed; border-collapse: collapse;}
+            table tr { padding:0px; margin:0px; background: #fff; border: solid 1px #222;}
+            table td { padding:0px; margin:0px; background: #eee; border: solid 1px #ccc;}
+            #iMainContainer{
+                margin: 1px;
+                padding: 1px;
+            }
+            .cBoxOne{
+                margin:1px;
+                padding: 1px;
+                width:40px;
+                height:40px;
+                background-color: #888;
+                border-radius:5px;
+            }
+
+            .cChipDiv{
+                float: left;
+                width:9px;
+                height:9px;
+                margin: 1px;
+                padding: 1px;
+                border:1px;
+                background-color: #eee;
+                border-radius: 1px;
+            }
+            .cChipImg{
+                float: left;
+                width:9px;
+                height:9px;
+                margin: 0px;
+                padding: 0px;
+                background-color: #222;
+                border-radius:1px;
+            }
+            .cInImg{
+                width:40px;
+                height:40px;
+                border-radius:5px;
+            }
+            .cUserBoxOne{
+                margin: 1px;
+                padding: 1px;
+                width:40px;
+                height:40px;
+                background-color: #44e;
+            }
+
+            .cRot0{ transform:rotate(0deg);}
+            .cRot90{ transform:rotate(90deg);}
+            .cRot180{ transform:rotate(180deg);}
+            .cRot270{ transform:rotate(270deg);}
+
+        </style>
+        <script src="./rootile.js"></script>
+    </head>
+    <body onload="_onload()">
+        <div id="iMainContainer">
+            <div id="iGameBoardContainer"></div>
+            <br>
+            <div id="iUserContainer"></div>
+            <button type="button" onclick="changeRootTileByEvent()">タイル変更</button>
+        </div>
+    </body>
+</html>
