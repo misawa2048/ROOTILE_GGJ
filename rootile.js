@@ -21,23 +21,24 @@ g_selectedTileEle=null;
 
 _onload = function(){
     // ダブルタップ禁止
+    document.addEventListener("dblclick", function(e){ e.preventDefault();}, { passive: false });    
     createBaseTable('iGameBoardContainer',4,4);
     createUserTable('iUserContainer',4);
 
     createUserItems(0,[0,0,1,1],[1,1,2]);
     createUserItems(1,[0,0,1,1],[1,2,4]);
     createUserItems(2,[0,0,1,1],[2,2,3]);
-    createUserItems(3,[0,0,1,1],[3,4,4]);
 
     setFlowerTile(0,4);
     //setFlowerTile(1,2);
     setFlowerTile(2,3);
     setFlowerTile(3,1);
 
-    setRootTile(0,0,2,0); //_x,_y,_tileId,_rotId
-    setRootTile(1,0,2,0); //_x,_y,_tileId,_rotId
-    setRootTile(2,0,3,0); //_x,_y,_tileId,_rotId
+    setRootTile(0,0,3,0); //_x,_y,_tileId,_rotId
+    //setRootTile(1,0,4,0); //_x,_y,_tileId,_rotId
+    setRootTile(2,0,4,3); //_x,_y,_tileId,_rotId
     setRootTile(3,0,4,0); //_x,_y,_tileId,_rotId
+    /*
 
     setRootTile(0,1,3,1); //_x,_y,_tileId,_rotId
     setRootTile(1,1,1,1); //_x,_y,_tileId,_rotId
@@ -48,8 +49,7 @@ _onload = function(){
     setRootTile(1,2,4,1); //_x,_y,_tileId,_rotId
     setRootTile(2,2,1,0); //_x,_y,_tileId,_rotId
     setRootTile(3,2,4,1); //_x,_y,_tileId,_rotId
-    
-    document.addEventListener("dblclick", function(e){ e.preventDefault();}, { passive: false });
+    */
 }
 
 //--------------------------------------
@@ -93,12 +93,8 @@ setRootTile=function(_x,_y,_tileId,_rotId=0){
     tileEle.classList=[];
     tileEle.classList.add('cInImg');
     tileEle.classList.add(rotStrArr[tileEle.rotId]);
-    tileEle.addEventListener('click', (e)=>{
-        rotateRootTileByElement(tileEle);
-    });
-    tileEle.addEventListener('keypress', (e)=>{
-        changeRootTileByEvent(e);
-    });
+    tileEle.addEventListener('click', (e)=>{ rotateRootTileByElement(tileEle); });
+    //tileEle.addEventListener("dblclick", function(e){ e.preventDefault();}, { passive: false });    
 }
 rotateRootTileByElement=function(_tileEle,_acc=1){
     g_selectedTileEle=_tileEle;
@@ -106,12 +102,6 @@ rotateRootTileByElement=function(_tileEle,_acc=1){
     _tileEle.classList=[];
     _tileEle.classList.add('cInImg');
     _tileEle.classList.add(rotStrArr[_tileEle.rotId]);
-}
-changeRootTileByEvent=function(_e=null){
-    if(g_selectedTileEle!=null){
-        g_selectedTileEle.src = "./img/"+tileImgArr[0];        
-    }
-    console.log("keypresssed");
 }
 
 createUserTable = function(_tgtDivId, _colNum){
@@ -128,6 +118,9 @@ createUserTable = function(_tgtDivId, _colNum){
         inImgDiv.classList.add('cUserBoxOne');
         trElem.appendChild(tdElem);
         tdElem.appendChild(inImgDiv);
+
+        inImgDiv.addEventListener('click', (e)=>{ });
+        //inImgDiv.addEventListener("dblclick", function(e){ e.preventDefault();}, { passive: false });    
     }
     tbElem.appendChild(trElem);
 }
