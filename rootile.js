@@ -152,14 +152,17 @@ createChip = function(_userId, _chipImgArr, _chipId){
 
 useChip = function(_inImgElem){
     console.log(`user${_inImgElem.userId}'s chip is ${_inImgElem.chipImgArr[_inImgElem.chipId]}`);
-    if(g_selectedTileEle!=null){
+    if(itemImgArr.includes(_inImgElem.chipImgArr[_inImgElem.chipId])){ // isItem
+        _inImgElem.style.display = "none"; // "block"
+    }
+    else if(g_selectedTileEle!=null){
         let id = g_selectedTileEle.id; // id=`iTile_${x}_${y}`;
         let chipImgArr =g_selectedTileEle.chipImgArr;
         let chipId=g_selectedTileEle.chipId;
         let rotId=g_selectedTileEle.rotId;
         console.log(`sel:${id}, name:${chipImgArr[chipId]},rot=${rotId}`);
-        if(chipImgArr[chipId]==tileImgArr[0]){ // "emptyGnd"
-            if(tileImgArr.includes(chipImgArr[chipId])){
+        if(tileImgArr.includes(_inImgElem.chipImgArr[_inImgElem.chipId])){ // isRoot
+            if(chipImgArr[chipId]==tileImgArr[0]){ // "emptyGnd"
                 let posArr= id.split('_');
                 let x = parseInt(posArr[1]);
                 let y = parseInt(posArr[2])-1; // yはテーブル準拠なのでROOTはy-1
