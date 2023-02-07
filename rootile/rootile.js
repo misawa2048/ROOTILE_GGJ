@@ -166,3 +166,7 @@ useChip = function(_inImgElem){
         }
     }
 }
+
+slideRoot = function(_dir){ // 0:← 1:↑ 2:→ 3:↓
+    console.log(`slide:${_dir}`);
+}
