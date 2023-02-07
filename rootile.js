@@ -181,7 +181,7 @@ useChip = function(_inImgElem){
                 let x = parseInt(posArr[1]);
                 let y = parseInt(posArr[2])-1; // yはテーブル準拠なのでROOTはy-1
                 setRootTile(x,y,_inImgElem.chipId,0); //_x,_y,_tileId,_rotId
-                _inImgElem.parentEle.style.display = "none"; // "block"
+                _inImgElem.style.display = "none"; // "block"
             }
         }
     }
