@@ -54,3 +54,5 @@ table td { padding:0px; margin:0px; border: solid 1px #ccc;}
 .cRot90{ transform:rotate(90deg);}
 .cRot180{ transform:rotate(180deg);}
 .cRot270{ transform:rotate(270deg);}
+
+.cSlBtn{ width: 5%; height: 3%;}
