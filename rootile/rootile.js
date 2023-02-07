@@ -1,49 +1,43 @@
-let tileImgArr=[
-    "emptygnd.png", // カラ
-    "nekko1.png", // 十
-    "nekko2.png", // 」「
-    "nekko3.png", // |
-    "nekko4.png", // L
-];
-let flowerImgArr=[
-    "emptysky.png", // カラ
-    "1himawarai.png", // ひまわり
-    "2daisy.png", // デイジー
-    "3tulip.png", // チューリップ
-    "4tile.png", // すみれ
-];
-let itemImgArr=[
-    "slide.png","kaiten.png",
-]
-let rotStrArr=['cRot0','cRot90','cRot180','cRot270',];
-
-g_selectedTileEle=null;
-g_selectedTileRot=0;
-
 _onload = function(){
     // ダブルタップ禁止
-    document.addEventListener("dblclick", function(e){ e.preventDefault();}, { passive: false });    
-    createBaseTable('iGameBoardContainer',4,4);
-    createUserTable('iUserContainer',14);
-
-    createUserItems(0,[0,0,1,1],[1,2,3,4]);
-    createUserItems(1,[0,0,1,1],[1,2,3,4]);
-    createUserItems(2,[0,0,1,1],[2,3,4,4]);
-    //createUserItems(3,[0,0,1,1],[4,4,4]);
-
-    setFlowerTile(0,4);
-    //setFlowerTile(1,2);
-    setFlowerTile(2,3);
-    setFlowerTile(3,1);
+    document.addEventListener("dblclick", function(e){ e.preventDefault();}, { passive: false });
+    var numPlayers = 4;
+    let vars = getVarsFromParams();
+    if(vars["numplayers"]!=undefined){numPlayers=parseInt(vars["numplayers"]);}
+    prepare(numPlayers);
 }
 
+prepare = function(_playerNo=4){
+    _playerNo = Math.min(4,Math.max(2,_playerNo));
+    createBaseTable('iGameBoardContainer',4,4);
+    createUserTable('iUserContainer',_playerNo);
+
+    var flowerids=[0,0,0,0];
+    for(var i=0;i<_playerNo;++i){
+        flowerids[i]=i+1;
+    }
+    flowerids = shuffle(flowerids);
+    for(var i=0;i<flowerids.length;++i){
+        setFlowerTile(i,flowerids[i]);
+    }
+
+    var tiles = Array.from(tileIdArr);
+    tiles = shuffle(tiles);
+    let numPerPl = tileIdArr.length/_playerNo;
+    for(var i=0;i<_playerNo;++i){
+        var tileArr=[];
+        for(var n=0;n<numPerPl;++n){
+            tileArr.push(tiles.pop());
+        }
+        createUserItems(i,[0,0,1,1],tileArr);
+    }
+}
 //--------------------------------------
 // テーブル作成
 //--------------------------------------
 createBaseTable = function(_tgtDivId, _colNum, _rowNum){
     let elem = document.getElementById(_tgtDivId);
     let tbElem = document.createElement("table");
-    elem.innerHTML="";
     elem.appendChild(tbElem);
 
     for(var y=0;y<_rowNum;++y){
@@ -126,11 +120,11 @@ createUserItems = function(_userId,_itemIdArr,_rootIdArr){
     let divStr = `iUserBox${_userId}`;
     let userBoxDiv=document.getElementById(divStr);
     userBoxDiv.innerHTML="";
-    for(var i=0;i<_itemIdArr.length;++i){
-        userBoxDiv.appendChild(createChip(_userId,itemImgArr,_itemIdArr[i]));    
-    }
     for(var i=0;i<_rootIdArr.length;++i){
         userBoxDiv.appendChild(createChip(_userId,tileImgArr,_rootIdArr[i]));    
+    }
+    for(var i=0;i<_itemIdArr.length;++i){
+        userBoxDiv.appendChild(createChip(_userId,itemImgArr,_itemIdArr[i]));    
     }
 }
 createChip = function(_userId, _chipImgArr, _chipId){
@@ -151,7 +145,7 @@ createChip = function(_userId, _chipImgArr, _chipId){
 }
 
 useChip = function(_inImgElem){
-    console.log(`user${_inImgElem.userId}'s chip is ${_inImgElem.chipImgArr[_inImgElem.chipId]}`);
+    //console.log(`user${_inImgElem.userId}'s chip is ${_inImgElem.chipImgArr[_inImgElem.chipId]}`);
     if(itemImgArr.includes(_inImgElem.chipImgArr[_inImgElem.chipId])){ // isItem
         _inImgElem.style.display = "none"; // "block"
     }
@@ -160,7 +154,7 @@ useChip = function(_inImgElem){
         let chipImgArr =g_selectedTileEle.chipImgArr;
         let chipId=g_selectedTileEle.chipId;
         let rotId=g_selectedTileEle.rotId;
-        console.log(`sel:${id}, name:${chipImgArr[chipId]},rot=${rotId}`);
+        //console.log(`sel:${id}, name:${chipImgArr[chipId]},rot=${rotId}`);
         if(tileImgArr.includes(_inImgElem.chipImgArr[_inImgElem.chipId])){ // isRoot
             if(chipImgArr[chipId]==tileImgArr[0]){ // "emptyGnd"
                 let posArr= id.split('_');
