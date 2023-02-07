@@ -26,32 +26,15 @@ _onload = function(){
     createBaseTable('iGameBoardContainer',4,4);
     createUserTable('iUserContainer',14);
 
-    createUserItems(0,[0,0,1,1],[1,1,2]);
-    createUserItems(1,[0,0,1,1],[1,2,4]);
-    createUserItems(2,[0,0,1,1],[2,2,3]);
-    //createUserItems(3,[0,0,1,1],[4,3,1]);
+    createUserItems(0,[0,0,1,1],[1,2,3,4]);
+    createUserItems(1,[0,0,1,1],[1,2,3,4]);
+    createUserItems(2,[0,0,1,1],[2,3,4,4]);
+    //createUserItems(3,[0,0,1,1],[4,4,4]);
 
     setFlowerTile(0,4);
     //setFlowerTile(1,2);
     setFlowerTile(2,3);
     setFlowerTile(3,1);
-
-    setRootTile(0,0,3,0); //_x,_y,_tileId,_rotId
-    //setRootTile(1,0,4,0); //_x,_y,_tileId,_rotId
-    setRootTile(2,0,4,3); //_x,_y,_tileId,_rotId
-    setRootTile(3,0,4,0); //_x,_y,_tileId,_rotId
-    /*
-
-    setRootTile(0,1,3,1); //_x,_y,_tileId,_rotId
-    setRootTile(1,1,1,1); //_x,_y,_tileId,_rotId
-    setRootTile(2,1,4,3); //_x,_y,_tileId,_rotId
-    setRootTile(3,1,3,3); //_x,_y,_tileId,_rotId
-
-    setRootTile(0,2,2,1); //_x,_y,_tileId,_rotId
-    setRootTile(1,2,4,1); //_x,_y,_tileId,_rotId
-    setRootTile(2,2,1,0); //_x,_y,_tileId,_rotId
-    setRootTile(3,2,4,1); //_x,_y,_tileId,_rotId
-    */
 }
 
 //--------------------------------------
