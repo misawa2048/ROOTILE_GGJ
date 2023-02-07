@@ -2,10 +2,14 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>ROOTILE</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />        <title>ROOTILE</title>
         <style>
-            html body {margin:0;}
-            table { width: 98vmin; table-layout: fixed; border-collapse: collapse;}
+            html body {
+                margin:0;
+                touch-action: manipulation;
+
+            }
+            table { width: 100hmin; margin:auto; table-layout: fixed; border-collapse: collapse;}
             table tr { padding:0px; margin:0px; border: solid 1px #222;}
             table td { padding:0px; margin:0px; border: solid 1px #ccc;}
             #iMainContainer{ margin: 1px; padding: 1px; }
@@ -29,6 +33,7 @@
             .cChipDiv{
                 float: left;
                 width:5vmin;
+                height:5vmin;
                 margin: 5%;
                 padding: 1%;
                 border:1px;
