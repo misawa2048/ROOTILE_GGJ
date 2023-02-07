@@ -36,11 +36,12 @@ prepare = function(_playerNo=4){
 // テーブル作成
 //--------------------------------------
 createBaseTable = function(_tgtDivId, _colNum, _rowNum){
+    g_elemArr=[]; //[y][x]
     let elem = document.getElementById(_tgtDivId);
     let tbElem = document.createElement("table");
     elem.appendChild(tbElem);
-
     for(var y=0;y<_rowNum;++y){
+        var elemXArr=[];
         let trElem = document.createElement("tr");
         for(var x=0;x<_colNum;++x){
             let tdElem = document.createElement("td");
@@ -48,6 +49,7 @@ createBaseTable = function(_tgtDivId, _colNum, _rowNum){
             inImgDiv.classList.add('cBoxOne');
 
             let inImgElem = document.createElement("img");
+            elemXArr.push(inImgElem);
             inImgElem.id=`iTile_${x}_${y}`;
             if(y==0){ setTileByElement(inImgElem,flowerImgArr,0); }
             else{     setTileByElement(inImgElem,tileImgArr,0); }
@@ -59,6 +61,7 @@ createBaseTable = function(_tgtDivId, _colNum, _rowNum){
                 inImgElem.addEventListener('click', (e)=>{ rotateRootTileByElement(inImgElem); });
             }
         }
+        g_elemArr.push(elemXArr);
         tbElem.appendChild(trElem);
     }
 }
@@ -74,28 +77,14 @@ setTileByElement=function(_tileEle, _chipImgArr, _chipId, _rotId=0){
 }
 
 setFlowerTile=function(_x,_flowerId){
-    let imgIdStr = `iTile_${_x}_0`;
-    setTileByElement(document.getElementById(imgIdStr),flowerImgArr,_flowerId);
+    setTileByElement(g_elemArr[0][_x],flowerImgArr,_flowerId);
 }
-
 setRootTile=function(_x,_y,_tileId,_rotId=0){
-    let imgIdStr = `iTile_${_x}_${_y+1}`;
-    setTileByElement(document.getElementById(imgIdStr),tileImgArr,_tileId,_rotId);
+    setTileByElement(g_elemArr[_y+1][_x],tileImgArr,_tileId,_rotId);
 }
-
 rotateRootTileByElement=function(_tileEle,_acc=1){
     g_selectedTileEle=_tileEle;
-    _tileEle.rotId=(_tileEle.rotId+_acc)&3;
-    _tileEle.classList=[];
-    _tileEle.classList.add('cInImg');
-    _tileEle.classList.add(rotStrArr[_tileEle.rotId]);
-}
-changeRootTileByEvent=function(_e=null){
-    if(g_selectedTileEle!=null){
-        g_selectedTileRot = (g_selectedTileRot+1)%5;
-        g_selectedTileEle.src = "./img/"+tileImgArr[g_selectedTileRot];
-    }
-    console.log("keypresssed");
+    setTileByElement(_tileEle,tileImgArr,_tileEle.chipId,(_tileEle.rotId+_acc)&3);
 }
 
 createUserTable = function(_tgtDivId, _colNum){
@@ -168,5 +157,27 @@ useChip = function(_inImgElem){
 }
 
 slideRoot = function(_dir){ // 0:← 1:↑ 2:→ 3:↓
+    if(g_selectedTileEle!=null){
+        let ptArr=g_selectedTileEle.id.split('_')
+        let tx = parseInt(ptArr[1]);
+        let ty = parseInt(ptArr[2]);
+        console.log(`tgt:${tx},${ty}`);
+        
+        if(_dir==0){
+            let tmpChipId = g_elemArr[ty][0].chipId;
+            let tmpRotId = g_elemArr[ty][0].rotId;
+            setTileByElement(g_elemArr[ty][0],tileImgArr,g_elemArr[ty][1].chipId,g_elemArr[ty][1].rotId);
+            setTileByElement(g_elemArr[ty][1],tileImgArr,g_elemArr[ty][2].chipId,g_elemArr[ty][2].rotId);
+            setTileByElement(g_elemArr[ty][2],tileImgArr,g_elemArr[ty][3].chipId,g_elemArr[ty][3].rotId);
+            setTileByElement(g_elemArr[ty][3],tileImgArr,tmpChipId,tmpRotId);
+        }
+        if(_dir==1){
+            let tmpChipId = g_elemArr[1][tx].chipId;
+            let tmpRotId = g_elemArr[1][tx].rotId;
+            setTileByElement(g_elemArr[1][tx],tileImgArr,g_elemArr[2][tx].chipId,g_elemArr[2][tx].rotId);
+            setTileByElement(g_elemArr[2][tx],tileImgArr,g_elemArr[3][tx].chipId,g_elemArr[3][tx].rotId);
+            setTileByElement(g_elemArr[3][tx],tileImgArr,tmpChipId,tmpRotId);
+        }
+    }
     console.log(`slide:${_dir}`);
 }

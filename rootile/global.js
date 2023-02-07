@@ -20,7 +20,7 @@ let rotStrArr=['cRot0','cRot90','cRot180','cRot270',];
 
 g_selectedTileEle=null;
 g_selectedTileRot=0;
-
+g_elemArr=[]; //[y][x]
 //--------------------------------------
 // パラメータ取得
 //--------------------------------------
