@@ -10,8 +10,13 @@ table td { padding:0px; margin:0px; border: solid 1px #ccc;}
     border:0px;
     margin:1%;
     padding:0px;
-    background-color: #ccc;
     border-radius: 4%;
+}
+.cBoxColNml{
+    background-color: #888;
+}
+.cBoxColSel{
+    background-color: #cf8;
 }
 .cInImg{
     padding: 0%;
