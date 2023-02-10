@@ -19,8 +19,10 @@ let itemImgArr=[
 let rotStrArr=['cRot0','cRot90','cRot180','cRot270',];
 
 g_selectedTileEle=null;
+g_selectedUserEle=null;
 g_selectedTileRot=0;
 g_elemArr=[]; //[y][x]
+g_userElemArr=[]; //[]
 //--------------------------------------
 // パラメータ取得
 //--------------------------------------

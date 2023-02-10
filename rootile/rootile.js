@@ -31,6 +31,7 @@ prepare = function(_playerNo=4){
         }
         createUserItems(i,[0,0,1,1],tileArr);
     }
+    setUser(0);
 }
 //--------------------------------------
 // テーブル作成
@@ -86,6 +87,7 @@ setRootTile=function(_x,_y,_tileId,_rotId=0){
 }
 
 createUserTable = function(_tgtDivId, _colNum){
+    g_userElemArr=[];
     let elem = document.getElementById(_tgtDivId);
     let tbElem = document.createElement("table");
     elem.innerHTML="";
@@ -97,8 +99,12 @@ createUserTable = function(_tgtDivId, _colNum){
         let inImgDiv=document.createElement("div");
         inImgDiv.id=`iUserBox${x}`;
         inImgDiv.classList.add('cUserBoxOne');
+        inImgDiv.classList.add('cUserBoxColNml');
         trElem.appendChild(tdElem);
         tdElem.appendChild(inImgDiv);
+
+        g_userElemArr.push(inImgDiv);
+        inImgDiv.addEventListener('click', (e)=>{ setUserByElement(inImgDiv); });
     }
     tbElem.appendChild(trElem);
 }
@@ -167,9 +173,25 @@ setSelTile = function(_tileEle){
             }
         }
     }
-
-    rotateRootTileByElement(g_selectedTileEle,1);
 }
+
+setUser = function(_uid){
+    if(g_userElemArr.length>_uid){
+        setUserByElement(g_userElemArr[_uid]);    
+    }
+}
+setUserByElement = function(_userBoxEle){
+    for(var i=0;i<g_userElemArr.length;++i){
+        g_userElemArr[i].classList=[];
+        g_userElemArr[i].classList.add('cUserBoxOne');
+        if(g_userElemArr[i]!=_userBoxEle){
+            g_userElemArr[i].classList.add('cUserBoxColNml');
+        }else{
+            g_userElemArr[i].classList.add('cUserBoxColSel');
+        }
+    }
+}
+
 rotateRoot = function(_dir=0,_num=1){ // 0:clockwise 1:counterclockwise
     if(g_selectedTileEle!=null){
         for(var i=0;i<_num;++i){
