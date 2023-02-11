@@ -5,7 +5,7 @@ _onload = function(){
     let vars = getVarsFromParams();
     if(vars["numplayers"]!=undefined){numPlayers=parseInt(vars["numplayers"]);}
     prepare(numPlayers);
-    if(vars["mode"]!=undefined){ setAllRoot(); }
+    if(vars["mode"]!=undefined){ setAllRoot(); g_selectedTileEle=null; }
 }
 
 prepare = function(_playerNo=4){
