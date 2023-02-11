@@ -22,7 +22,8 @@ g_selectedTileEle=null;
 g_selectedUserEle=null;
 g_selectedTileRot=0;
 g_elemArr=[]; //[y][x]
-g_userElemArr=[]; //[]
+g_userElemArr=[]; //[userId]
+g_rootChipArr=[]; // 3x4=12
 //--------------------------------------
 // パラメータ取得
 //--------------------------------------

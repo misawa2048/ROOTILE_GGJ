@@ -5,6 +5,7 @@ _onload = function(){
     let vars = getVarsFromParams();
     if(vars["numplayers"]!=undefined){numPlayers=parseInt(vars["numplayers"]);}
     prepare(numPlayers);
+    if(vars["mode"]!=undefined){ setAllRoot(); }
 }
 
 prepare = function(_playerNo=4){
@@ -69,6 +70,17 @@ createBaseTable = function(_tgtDivId, _colNum, _rowNum){
     }
 }
 
+setAllRoot=function(){
+    var cnt=0;
+    for(var y=1;y<g_elemArr.length;++y){
+        for(var x=0;x<g_elemArr[y].length;++x){
+            let inImgElem = g_elemArr[y][x];
+            g_selectedTileEle=inImgElem;
+            useChip(g_rootChipArr[cnt++]);
+        }
+    }
+}
+
 setTileByElement=function(_tileEle, _chipImgArr, _chipId, _rotId=0){
     _tileEle.chipImgArr=_chipImgArr;
     _tileEle.chipId=_chipId;
@@ -114,7 +126,9 @@ createUserItems = function(_userId,_itemIdArr,_rootIdArr){
     let userBoxDiv=document.getElementById(divStr);
     userBoxDiv.innerHTML="";
     for(var i=0;i<_rootIdArr.length;++i){
-        userBoxDiv.appendChild(createChip(_userId,tileImgArr,_rootIdArr[i]));    
+        let chipDivEle = createChip(_userId,tileImgArr,_rootIdArr[i]);
+        userBoxDiv.appendChild(chipDivEle);    
+        g_rootChipArr.push(chipDivEle._inImgElem);
     }
     for(var i=0;i<_itemIdArr.length;++i){
         userBoxDiv.appendChild(createChip(_userId,itemImgArr,_itemIdArr[i]));    
@@ -133,6 +147,7 @@ createChip = function(_userId, _chipImgArr, _chipId){
     inImgElem.addEventListener('click', (e)=>{
         useChip(inImgElem);
     });
+    inImgDiv._inImgElem=inImgElem;
     inImgDiv.appendChild(inImgElem);
     return inImgDiv;    
 }
