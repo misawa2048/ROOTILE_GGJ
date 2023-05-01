@@ -10,10 +10,9 @@ table td { padding:0px; margin:0px; border: solid 1px #ccc;}
     border:0px;
     margin:1%;
     padding:0px;
+    background-color: #ccc;
     border-radius: 4%;
 }
-.cBoxColNml{ background-color: #888; }
-.cBoxColSel{ background-color: #cf8; }
 .cInImg{
     padding: 0%;
     margin:5%;
@@ -48,13 +47,12 @@ table td { padding:0px; margin:0px; border: solid 1px #ccc;}
     margin: 1%;
     padding: 0%;
     height:35vmin;
+    background-color: #44e;
 }
-.cUserBoxColNml{ background-color: #44b; }
-.cUserBoxColSel{ background-color: #77f; }
 
 .cRot0{ transform:rotate(0deg);}
 .cRot90{ transform:rotate(90deg);}
 .cRot180{ transform:rotate(180deg);}
 .cRot270{ transform:rotate(270deg);}
 
-.cSlBtn{ width: 6%; height: 4%;}
+.cSlBtn{ width: 5%; height: 3%;}

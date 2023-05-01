@@ -6,7 +6,7 @@ const tileImgArr=[
     "nekko4.png", // L
 ];
 const flowerImgArr=[
-    "emptysky.png", // カラ
+    "tile_bud.png", // カラ
     "1himawarai.png", // ひまわり
     "2daisy.png", // デイジー
     "3tulip.png", // チューリップ
@@ -19,11 +19,8 @@ let itemImgArr=[
 let rotStrArr=['cRot0','cRot90','cRot180','cRot270',];
 
 g_selectedTileEle=null;
-g_selectedUserEle=null;
 g_selectedTileRot=0;
 g_elemArr=[]; //[y][x]
-g_userElemArr=[]; //[userId]
-g_rootChipArr=[]; // 3x4=12
 //--------------------------------------
 // パラメータ取得
 //--------------------------------------

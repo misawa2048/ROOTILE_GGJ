@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="70.87" height="70.87" viewBox="0.00 0.00 344.00 344.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g stroke-linecap="round" transform="translate(-99.00, -14.00)" id="Layer_9">
+<path d="M146.94,255.18 L146.94,117.38" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+<path d="M146.94,117.38 L284.74,117.38" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+<path d="M284.74,117.38 L284.74,255.18" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+<path d="M284.74,255.18 L146.94,255.18" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+</g>
+<g stroke-linecap="round" transform="translate(-99.00, -13.00)" id="Layer_9_Copy_3" opacity="0.50">
+<path d="M202.44,116.88 L284.25,116.88" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+<path d="M284.25,116.88 L340.24,116.88" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+<path d="M340.24,116.88 L340.24,254.68" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+<path d="M340.24,254.68 L284.50,254.68" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+<path d="M284.50,254.68 L202.44,254.68" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+</g>
+<g stroke-linecap="round" transform="translate(-99.00, -13.00)" id="Layer_9_Copy_2" opacity="0.30">
+<path d="M257.94,117.38 L395.74,117.38" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+<path d="M395.74,117.38 L395.74,255.18" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+<path d="M395.74,255.18 L257.94,255.18" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+</g>
+<g stroke-linecap="round" transform="translate(-38.00, 0.00)" id="arrow_line">
+<path d="M141.41,172.25 L327.30,172.25" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+</g>
+<g stroke-linecap="round" id="arrow">
+<path d="M86.00,172.00 L122.87,208.88" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+<path d="M86.00,172.00 L122.87,135.13" fill="none" stroke="rgb(56, 45, 41)" stroke-width="20.00" stroke-opacity="1.00" stroke-linejoin="round"/>
+</g>
+</svg>
